@@ -1,7 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+
+	pokeapi "github.com/Moyaz79/pokedexcli/internal/pokeApi"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	// startRepl()
+	pokeapiClient := pokeapi.NewClient()
+
+	resp, err := pokeapiClient.ListLocationAreas()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(resp)
+
 }
